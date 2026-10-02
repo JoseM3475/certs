@@ -187,30 +187,18 @@ Azure Data Explorer is optimized for interactive analytics over large volumes of
 Azure Event Grid provides event-based routing rather than batch data integration.
 Azure Service Bus is a messaging service used for decoupling applications and does not perform data ingestion or integration workflows.
 
-##
-You have Azure virtual machines that contain Microsoft SQL Server databases configured in an Always On availability group.
-
+**Question:** You have Azure virtual machines that contain Microsoft SQL Server databases configured in an Always On availability group.
 Backups must be retained for 10 years and managed centrally in the Azure portal.
-
 You need an Azure-native backup solution that does NOT require managing the backup infrastructure.
-
 What should you recommend?
-
 Select only one answer.
 
-Configure Automated Backup for SQL Server on each virtual machine and store the backups in Azure Storage.
+- Configure Automated Backup for SQL Server on each virtual machine and store the backups in Azure Storage.
+- Install the Microsoft Azure Recovery Services (MARS) agent and back up the SQL Server data files.
+- Perform manual backups to managed disks and copy the backups to Azure Storage.
+- Use Azure Backup for SQL Server on Azure VMs with a Recovery Services vault and long-term retention.
 
-
-Install the Microsoft Azure Recovery Services (MARS) agent and back up the SQL Server data files.
-
-This answer is incorrect.
-
-Perform manual backups to managed disks and copy the backups to Azure Storage.
-
-
-Use Azure Backup for SQL Server on Azure VMs with a Recovery Services vault and long-term retention.
-
-This answer is correct.
+**Answer:**. Use Azure Backup for SQL Server on Azure VMs with a Recovery Services vault and long-term retention.
 Objective:
 
 3.1 Design solutions for backup and disaster recovery
@@ -237,8 +225,7 @@ Azure Backup for SQL Server on Azure VMs provides application-consistent backups
 
 ## Availability sets provide high availability for Azure virtual machines by distributing instances across fault and update domains, ensuring workloads remain available during host maintenance or hardware failures. Azure Backup and virtual machine snapshots provide recovery after failure but do not ensure availability. Azure Site Recovery is a disaster recovery solution designed for regional outages rather than host-level availability.
 
-##
-You have an Azure App Service web app that writes data to an Azure SQL database.
+**Question:** You have an Azure App Service web app that writes data to an Azure SQL database.
 
 You plan to configure the database to use the Always Encrypted feature.
 
@@ -248,29 +235,17 @@ Which two actions should you include in the recommendations? Each correct answer
 
 Select all answers that apply.
 
-Change the connection string used by the application.
+- Change the connection string used by the application.
+- Change the SSL settings for the web app.
+- Enable Transparent Data Encryption (TDE).
+- Store keys in Azure Key Vault.
+- Store keys in the certificate store.
 
-This answer is correct.
-
-Change the SSL settings for the web app.
-
-
-Enable Transparent Data Encryption (TDE).
-
-This answer is incorrect.
-
-Store keys in Azure Key Vault.
-
-This answer is correct.
-
-Store keys in the certificate store.
-
-You need to change the connection string to use Always Encrypted and access to the keys from a store such as Key Vault. Changing the SSL settings for the web app allows the use of SSL for in transit encryption, but not Always Encrypted.
+**Answer:** You need to change the connection string to use Always Encrypted and access to the keys from a store such as Key Vault. Changing the SSL settings for the web app allows the use of SSL for in transit encryption, but not Always Encrypted.
 
 Tutorial: Getting started with Always Encrypted - SQL Server | Microsoft Learn
 
-## 
-You have a Microsoft SQL Server application that uses SQL common language runtime (CLR) integration.
+**Question:** You have a Microsoft SQL Server application that uses SQL common language runtime (CLR) integration.
 
 You need to migrate the application to Azure. The solution must minimize ongoing administration costs.
 
@@ -279,25 +254,15 @@ What should you use?
 Select only one answer.
 
 Azure Cosmos DB for NoSQL
-
-
 Azure SQL Database
-
-
 Azure SQL Managed Instance
-
-This answer is correct.
-
 SQL Server on Azure Virtual Machines
 
-This answer is incorrect.
-SQL Managed Instance supports SQL CLR and avoids general administrative overhead. Azure SQL Database does not support SQL CLR integration. SQL Server on Azure Virtual Machines supports SQL CLR integration but has higher ongoing administrative overhead. Azure Cosmos DB for NoSQL API supports SQL syntax over documents. It does not support SQL CLR.
+**Answer:** SQL Managed Instance supports SQL CLR and avoids general administrative overhead. Azure SQL Database does not support SQL CLR integration. SQL Server on Azure Virtual Machines supports SQL CLR integration but has higher ongoing administrative overhead. Azure Cosmos DB for NoSQL API supports SQL syntax over documents. It does not support SQL CLR.
 
 Design for Azure SQL Managed Instance - Training | Microsoft Learn
 
-##
-
-You have an Azure SQL database named DB1 that contains a table named Customers and is 500 GB.
+**Question:** You have an Azure SQL database named DB1 that contains a table named Customers and is 500 GB.
 
 You need to minimize how long it takes to back up and restore DB1.
 
@@ -306,60 +271,30 @@ What should you do?
 Select only one answer.
 
 Configure DB1 to use the Business Critical service tier.
-
-
 Configure DB1 to use the Hyperscale service tier.
-
-This answer is correct.
-
 Configure DB1 to use the Premium service tier.
-
-
 Split the Customers table into multiple tables within the same database.
 
-This answer is incorrect.
-Objective:
+**Answer:** Configuring the database to use the Hyperscale service tier minimizes backup and restore times by using snapshot-based backups and a distributed storage architecture optimized for very large databases, making it well suited for a 500-GB workload. Business Critical and Premium service tiers prioritize performance and availability but rely on traditional backup mechanisms that take longer as the database size increases. Splitting the table introduces schema and application complexity and does not directly improve backup or restore performance.
 
-2.1 Design data storage solutions for relational data
-
-What This Item Tests:
-
-Recommend a database service tier and compute tier
-
-Additional Reading:
-
-Understand SQL database hyperscale - Training | Microsoft Learn
-
-Rationale:
-
-Configuring the database to use the Hyperscale service tier minimizes backup and restore times by using snapshot-based backups and a distributed storage architecture optimized for very large databases, making it well suited for a 500-GB workload. Business Critical and Premium service tiers prioritize performance and availability but rely on traditional backup mechanisms that take longer as the database size increases. Splitting the table introduces schema and application complexity and does not directly improve backup or restore performance.
-
-## 
-Your organization operates from locations in the United States, the United Kingdom, Australia, and Germany. Each location has employees that work with files stored in a File Share on Azure Storage.
+**Question:** Your organization operates from locations in the United States, the United Kingdom, Australia, and Germany. Each location has employees that work with files stored in a File Share on Azure Storage.
 
 You are designing the structure of the storage accounts. The accounts must meet the following requirements:
 
-A single policy will enforce regulatory requirements.
-Low IO latency is critical.
-Costs must be minimized.
+- A single policy will enforce regulatory requirements.
+- Low IO latency is critical.
+- Costs must be minimized.
+
 How many storage accounts should you create?
 
 Select only one answer.
 
-1
+- 1
+- 2
+- 3
+- 4
 
-This answer is incorrect.
-
-2
-
-
-3
-
-
-4
-
-This answer is correct.
-The requirement for high performance is best met by local files in each country. A single policy can still be applied at a scope that covers the four storage accounts. Increasing the number of storage accounts does not increase the costs of the solution, apart from a very small potential increase in administration costs.
+**Answer:** The requirement for high performance is best met by local files in each country. A single policy can still be applied at a scope that covers the four storage accounts. Increasing the number of storage accounts does not increase the costs of the solution, apart from a very small potential increase in administration costs.
 
 Design for Azure storage accounts - Training | Microsoft Learn
 

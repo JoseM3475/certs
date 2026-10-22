@@ -100,6 +100,90 @@ You can deploy other types of trusts.
 - Shortcut.	Nontransitive.	One-way or two-way. Configure shortcut trusts to reduce the time taken to authenticate between AD DS domains that are in different parts of an AD DS forest. No shortcut trusts exist by default, and an administrator must create them if they are required.
 
 ### Deploy Active Directory Domain Services domain controllers
+Domain controllers authenticate all users and computers in a domain. Therefore, it's critical to ensure the optimal number and placement of domain controllers in any Active Directory Domain Services (AD DS) environment, especially in larger, distributed environments.
+
+Deploy AD DS domain controllers in an on-premises environment.
+-  Install the binaries necessary to implement the domain controller role.
+-  Configure AD DS role.
+
+SYSVOL
+
+Install a domain controller on a Server Core installation of Windows Server.
+Install a domain controller from media.
+Branch office considerations. When you deploy a domain controller in a branch office that can't guarantee physical security, you can use additional measures to reduce the impact of a security breach. Deploy an RODC. The RODC contains a read-only copy of the AD DS database, and by default, it doesn't cache any user passwords. Once an RODC is deployed, most of its configuration centres on controlling which credentials it caches and who manages it. This is governed by the Password Replication Policy (PRP).
+
+### Migrate a domain controller to a new site
+
+Managing sites and subnets is a critical part of managing any corporate domain. Creating a new site allows for grouping objects by their physical location. Adding a subnet keeps all of the resources at the new site on the same network (or parts of the network). Finally, migrating a domain controller to the new site helps reduce internet traffic and lag associated with reaching out to a distant site for authentication and authorization queries.
+
+Create a new site.
+Map the new site to a subnet.
+Move a domain controller to a new site
+
+### Manage Active Directory Domain Services operations masters
+
+Active Directory Domain Services (AD DS) uses a multiple-master process to copy data between domain controllers, and automatically implements a conflict resolution algorithm that remediates simultaneous, conflicting updates. multiple users and applications can concurrently apply changes to AD DS objects on different domain controllers. Such a model is necessary to support any AD DS environment with two or more domain controllers.
+
+What are AD DS operations masters?
+
+AD DS operation master roles are responsible for performing operations that are not suitable for a multiple-master model.  An operations master role is also known as a Flexible Single Master Operation (FSMO) role. There are five operations master roles:
+
+- Schema master
+- Domain-naming master
+- Infrastructure master
+- RID master
+- PDC emulator master
+
+  By default, the first domain controller installed in a forest hosts all five roles.
+
+  Forest operations masters.
+  - Domain naming master.
+  - Schema master.
+ 
+  Domain operations masters.
+  - RID master. Security principal.
+  - Infrastructure master.
+  - PDC emulator master.
+
+Manage AD DS operations masters
+In an AD DS environment where you distribute operations master roles among domain controllers, you might need to move a role from one domain controller to another.
+When you perform a move in a planned manner between two online domain controllers, the move is known as transferring the role. 
+In emergencies, if the current role holder is not available, the move is known as seizing the role. When you transfer a role, the latest data from the domain controller in that role replicates to .the  target server.
+
+Transfer operations master roles
+
+## Create and manage Active Directory objects
+
+### Define users, groups, and computers
+
+What are managed service accounts? AD DS object, named a managed service account, which you use to facilitate service-account management.
+Group managed service accounts enable you to extend the capabilities of standard managed service accounts to more than one server in your domain.
+Network Load Balancing (NLB).
+
+Group types:
+- Security. Security groups are security-enabled, and you use them to assign permissions to various resources. You can use security groups in permission entries in access control lists (ACLs) to help control security for resource access. If you want to use a group to manage security, it must be a security group.
+- Distribution. Email applications typically use distribution groups, which are not security-enabled. You also can use security groups as a means of distribution for email applications.
+
+Group scopes. The scope of a group determines both the range of a group’s abilities or permissions and the group membership. 
+- Local.
+- Domain-local.
+- Global.
+- Universal.
+
+What are computer objects?
+Computers, like users, are security principals, in that:
+
+- They have an account with a sign-in name and password that Windows changes automatically on a periodic basis.
+- They authenticate with the domain.
+- They can belong to groups and have access to resources, and you can configure them by using Group Policy.
+
+Computers container. Before you create a computer object in AD DS, you must have a place to put it. The Computers container is a built-in container in an AD DS domain. This container is the default location for the computer accounts when a computer joins the domain. This container is not an OU. Instead, it is an object of the Container class. You cannot create an OU within a container, so you cannot subdivide the Computers container. You also cannot link a Group Policy Object to a container. Therefore, we recommend that you create custom OUs to host computer objects, instead of using the Computers container.
+
+### Define organizational units
+
+
+
+
 
 
 

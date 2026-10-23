@@ -181,6 +181,34 @@ Computers container. Before you create a computer object in AD DS, you must have
 
 ### Define organizational units
 
+## Create and configure Group Policy Objects in Active Directory
+
+### Define Group Policy Objects
+
+Administrators can define settings centrally and then deploy them to computers across their organizations.
+You define Group Policy settings within a Group Policy Object (GPO). A GPO is an object that contains one or more policy settings that apply to one or more configuration settings for a user or a computer.
+User configuration settings or user policies, computer configuration settings or computer policies.
+Settings do not affect groups directly and apply only to user and computer objects.
+
+At the top of every GPO, settings are divided into two nodes: Computer Configuration node and the User Configuration node.
+- Computer Configuration contains settings that apply to a computer, regardless of which user signs in. These settings define operating-system behavior, security configuration, startup and shutdown scripts, and system-wide application settings. Examples include password and account-lockout requirements, service startup behavior, and settings that control Windows components for every user of the device.
+- User Configuration contains settings that apply to a user, regardless of which computer that user signs in to. These settings define the desktop environment, such as the appearance of the Start menu, logon and logoff scripts, folder redirection, and restrictions on the tools and Control Panel items that a user can access.
+
+Policies and preferences:
+- Policies contain managed settings that Group Policy enforces.
+- Preferences contain settings that establish an initial configuration that a user can subsequently change.
+
+The Policies node contains three subfolders in both Computer Configuration and User Configuration:
+- Software Settings holds the Software installation extension, which you use to deploy applications to computers or users.
+- Windows Settings holds settings that configure the operating system. Common items include Scripts (startup and shutdown for computers, logon and logoff for users), Security Settings (such as account policies, local policies, and Windows Defender Firewall), Name Resolution Policy, and Deployed Printers. Under User Configuration, this folder also includes Folder Redirection.
+- Administrative Templates holds hundreds of registry-based settings, organized into folders such as Control Panel, Network, System, Printers, and Windows Components. Each setting in this folder corresponds to a specific registry value that controls the behavior of Windows or an application.
+
+The Preferences node
+The structure of an individual policy setting.
+What are starter GPOs?
+
+### Implement Group Policy Object scope and inheritance
+
 
 
 

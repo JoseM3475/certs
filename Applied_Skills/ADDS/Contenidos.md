@@ -232,6 +232,15 @@ In Group Policy application, the default rule is that the last policy (the most 
 
 If you link several GPOs to an OU, their processing occurs in the order that the administrator specifies on the OU’s Linked Group Policy Objects tab in the Group Policy Management Console. 
 
+GPO inheritance.
+You can configure a policy setting in more than one GPO, which might result in GPOs conflicting with each other. In this case, the precedence of the GPOs determines which policy setting the client applies. A GPO with higher precedence prevails over a GPO with lower precedence. Precedence is determined numerically. Each GPO has a precedence value. The lower the number, the higher the precedence. Therefore, a GPO that has a precedence of one prevails over all other GPOs.
+Block Inheritance. You can configure a domain or OU to prevent the inheritance of policy settings. 
+
+Enforce a GPO link. Additionally, you can set a GPO link to be enforced. When you set a GPO link to Enforced, the GPO takes the highest level of precedence. Policy settings in that GPO prevail over any conflicting policy settings in other GPOs.
+
+Important. An enforced link applies to child containers even when those containers are set to Block Inheritance. The Enforced option causes the policy to apply to all objects within its scope.
+
+Evaluating precedence. To facilitate evaluation of GPO precedence, you can simply select an OU or domain, and then select the Group Policy Inheritance tab. This tab displays the resulting precedence of GPOs, accounting for GPO link, link order, inheritance blocking, and link enforcement. This tab doesn't account for policies that are linked to a site, for GPO security, or WMI filtering.
 
 
 

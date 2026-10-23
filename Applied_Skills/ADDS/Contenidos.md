@@ -209,6 +209,32 @@ What are starter GPOs?
 
 ### Implement Group Policy Object scope and inheritance
 
+The scope of a GPO is the collection of users and computers that will apply the settings in the GPO. You scope a GPO by linking it to an OU that contains the target users and computers.
+
+You can link GPOs to: Sites, Domains, Organizational Units (OUs).
+
+You can further narrow the scope of the GPO with one of two types of filters discussed in the following table.
+- Security. These specify security groups or individual user or computer objects that relate to a GPO’s scope, but to which the GPO explicitly should or shouldn't apply.
+- WMI. These specify a scope by using characteristics of a system, such as an operating system version or free disk space.
+
+GPO processing order
+The GPOs that apply to a user, computer, or both don't apply all at once. GPOs apply in a particular order. Conflicting settings that process later might overwrite settings that process first.
+
+Group Policy follows the following hierarchical processing order:
+
+- Local GPOs.
+- Site-linked GPOs.
+- Domain-linked GPOs.
+- OU-linked GPOs.
+- Child OU-linked GPOs.
+
+In Group Policy application, the default rule is that the last policy (the most specific policy) applied prevails.
+
+If you link several GPOs to an OU, their processing occurs in the order that the administrator specifies on the OU’s Linked Group Policy Objects tab in the Group Policy Management Console. 
+
+
+
+
 
 
 

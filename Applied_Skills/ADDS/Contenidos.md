@@ -242,7 +242,14 @@ Important. An enforced link applies to child containers even when those containe
 
 Evaluating precedence. To facilitate evaluation of GPO precedence, you can simply select an OU or domain, and then select the Group Policy Inheritance tab. This tab displays the resulting precedence of GPOs, accounting for GPO link, link order, inheritance blocking, and link enforcement. This tab doesn't account for policies that are linked to a site, for GPO security, or WMI filtering.
 
+## Manage security in Active Directory
 
+### Configure user account rights
+
+When configuring user rights, it's important to follow the principle of least privilege.
+You can also configure additional account security options that limit how and when an account can be used.
+
+### Configure user account rights to restrict access
 
 
 
